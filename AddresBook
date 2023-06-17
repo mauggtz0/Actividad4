@@ -1,4 +1,4 @@
-package trabajo1;
+package AddressBook;
 
 import java.io.*;
 import java.util.ArrayList;
