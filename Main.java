@@ -1,0 +1,78 @@
+package trabajo1;
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner entrada = new Scanner(System.in);
+        AddressBook addressBook = new AddressBook();
+
+        addressBook.load();
+
+        while(true) {
+
+            System.out.println("1. Crear contacto\n" +
+                                "2. Borrar contacto\n" +
+                                "3. Listar contactos\n" +
+                                "4. Salir");
+            System.out.print("Elija una opcion: ");
+            int opcion = entrada.nextInt();
+
+            switch (opcion) {
+
+                case 1:
+
+                    String numero = getCadena("numero");
+                    String nombre = getCadena("nombre");
+
+                    addressBook.create(numero, nombre);
+
+                    break;
+
+                case 2:
+
+                    numero = getCadena("el numero a borrar");
+
+                    addressBook.delete(numero);
+
+                    break;
+
+                case 3:
+
+                    addressBook.list();
+
+                    break;
+
+                case 4:
+
+                    System.out.println("Saliendo del programa...");
+
+                    addressBook.save();
+
+                    System.exit(0);
+
+                    break;
+
+                default:
+
+                    System.out.println("Opcion invalida");
+
+            }
+
+        }
+
+    }
+
+    public static String getCadena(String mensaje) {
+
+        Scanner entrada = new Scanner(System.in);
+
+        entrada.nextLine();
+        System.out.print("Ingrese el " + mensaje + ": ");
+        return entrada.nextLine();
+
+    }
+
+}
